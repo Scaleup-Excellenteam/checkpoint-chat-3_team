@@ -1,14 +1,16 @@
-import requests
+import socketio
 import time
 
-def send_message():
-    try:
-        response = requests.get('http://main-server:5000')
-        print(f"Response: {response.text}")
-    except Exception as e:
-        print(f"Error: {e}")
+sio = socketio.Client()
+
+@sio.on('response')
+def on_response(data):
+    print(f"Server response: {data}")
 
 if __name__ == '__main__':
+    sio.connect('http://main-server:5000')
+    
     while True:
-        send_message()
-        time.sleep(5)
+        message = input("Enter message: ")
+        sio.emit('message', message)
+        time.sleep(1)
