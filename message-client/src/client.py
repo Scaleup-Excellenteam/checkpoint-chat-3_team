@@ -30,7 +30,7 @@ def disconnect():
 
 if __name__ == "__main__":
     # use 'http://main-server:5000' if running in Docker with a service named main-server
-    sio.connect("http://11.7.16.1:5000")
+    sio.connect("http://main-server:5000")
     try:
         while True:
             msg = input("> ")
