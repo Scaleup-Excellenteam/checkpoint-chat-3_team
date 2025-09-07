@@ -7,10 +7,14 @@ services:
       - "5000:5000"
     volumes:
       - ./main-server/src:/app/src
+    command: /bin/bash
+    stdin_open: true
+    tty: true
     
   message-client:
     build: ./message-client
     volumes:
       - ./message-client/src:/app/src
-    depends_on:
-      - main-server
+    command: /bin/bash
+    stdin_open: true
+    tty: true
