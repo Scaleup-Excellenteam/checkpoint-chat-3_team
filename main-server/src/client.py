@@ -31,7 +31,7 @@ def disconnect():
 if __name__ == "__main__":
     # use 'http://main-server:5000' if running in Docker with a service named main-server
     # sio.connect("http://10.17.138.217:5000")
-    sio.connect("http://10.17.138.217:5000", 
+    sio.connect("http://main-server:5000", 
            transports=['polling'],
            wait_timeout=60)
     try:
