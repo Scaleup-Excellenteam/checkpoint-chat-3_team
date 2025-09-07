@@ -34,7 +34,7 @@ state = {
 # Persistence helpers
 # -------------------------
 def _utc_now() -> str:
-    return datetime.now(timezone.utc).isoformat().replace("+00:00", "Z")
+    return datetime.now(timezone.utc).isoformat().replace("+03:00", "Z")
 
 def _safe_write_json(path: Path, data: dict) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
