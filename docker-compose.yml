@@ -18,3 +18,11 @@ services:
     command: /bin/bash
     stdin_open: true
     tty: true
+    
+  watchdog:
+    build: ./watchdog
+    volumes:
+      - ./watchdog/src:/app/src
+    command: /bin/bash
+    stdin_open: true
+    tty: true
