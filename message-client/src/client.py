@@ -24,12 +24,17 @@ sio = socketio.Client(logger=config['logging']['enabled'], engineio_logger=confi
 
 @sio.event
 def connect():
-    print("[client] connected")
     sio.emit("join", {"room": ROOM, "name": NAME})
 
 @sio.on("system")
 def on_system(data):
-    print("[system]", data.get("msg"))
+    msg = data.get("msg", "")
+    if f"{NAME} joined {ROOM}" in msg:
+        # Show own join message
+        print(f"Joined room: {ROOM}")
+    elif "joined" in msg or "left" in msg or "disconnected" in msg:
+        # Show other users' join/leave messages
+        print(f"[system] {msg}")
 
 @sio.on("chat")
 def on_chat(data):
@@ -41,7 +46,7 @@ def on_error(data):
 
 @sio.event
 def disconnect():
-    print("[client] disconnected")
+    pass
 
 def log_message(msg):
     if config['logging']['show_timestamps']:
@@ -52,11 +57,9 @@ def log_message(msg):
 
 if __name__ == "__main__":
     try:
-        log_message(f"Connecting to {SERVER_URL}...")
         sio.connect(SERVER_URL, 
                    wait_timeout=TIMEOUT,
                    transports=TRANSPORTS)
-        log_message("Connected successfully!")
         
         while True:
             msg = input("> ")
