@@ -1,11 +1,27 @@
 {
   "rooms": {
     "general": {
-      "members": [
-        "john"
-      ],
+      "members": [],
       "created_at": "2025-09-07T13:22:20.416573+00:00",
-      "last_updated": "2025-09-07T13:24:14.336822+00:00"
+      "last_updated": "2025-09-08T10:19:54.400945+00:00"
+    },
+    "room1": {
+      "members": [],
+      "created_at": "2025-09-08T07:55:18.523489+00:00",
+      "last_updated": "2025-09-08T10:12:21.021542+00:00"
+    },
+    "john": {
+      "members": [],
+      "created_at": "2025-09-08T10:19:46.353176+00:00",
+      "last_updated": "2025-09-08T10:20:01.294130+00:00"
+    },
+    "r": {
+      "members": [
+        "t",
+        "j"
+      ],
+      "created_at": "2025-09-08T10:20:06.115417+00:00",
+      "last_updated": "2025-09-08T10:23:40.837183+00:00"
     }
   },
   "messages": {
@@ -59,6 +75,527 @@
         "from": "john",
         "body": "dfhere",
         "ts": "2025-09-07T13:24:14.336822+00:00"
+      },
+      {
+        "from": "server",
+        "body": "john joined general",
+        "ts": "2025-09-08T10:16:43.082476+00:00"
+      },
+      {
+        "from": "john",
+        "body": "https://www.astuces-aide-informatique.info/17978/nouvelle-adresse-zone-telechargement",
+        "ts": "2025-09-08T10:16:48.823830+00:00"
+      },
+      {
+        "from": "john",
+        "body": "google.com",
+        "ts": "2025-09-08T10:17:00.117394+00:00"
+      },
+      {
+        "from": "john",
+        "body": "google.com",
+        "ts": "2025-09-08T10:17:09.811873+00:00"
+      },
+      {
+        "from": "john",
+        "body": "aaa.co.il",
+        "ts": "2025-09-08T10:17:16.986946+00:00"
+      },
+      {
+        "from": "john",
+        "body": "kjdbsgs.org",
+        "ts": "2025-09-08T10:17:51.898057+00:00"
+      },
+      {
+        "from": "john",
+        "body": "\u001b[A\u001b[B\\\\",
+        "ts": "2025-09-08T10:19:03.193557+00:00"
+      },
+      {
+        "from": "john",
+        "body": "kndsv",
+        "ts": "2025-09-08T10:19:05.598711+00:00"
+      },
+      {
+        "from": "server",
+        "body": "john disconnected",
+        "ts": "2025-09-08T10:19:54.400945+00:00"
+      }
+    ],
+    "room1": [
+      {
+        "from": "server",
+        "body": "john joined room1",
+        "ts": "2025-09-08T07:55:18.525336+00:00"
+      },
+      {
+        "from": "john",
+        "body": "https://google.com",
+        "ts": "2025-09-08T07:55:35.584849+00:00"
+      },
+      {
+        "from": "john",
+        "body": "https://pornhub.com",
+        "ts": "2025-09-08T07:56:35.162533+00:00"
+      },
+      {
+        "from": "john",
+        "body": "https://www.youtube.com/",
+        "ts": "2025-09-08T07:59:14.061578+00:00"
+      },
+      {
+        "from": "john",
+        "body": "https://www.youtube.com/",
+        "ts": "2025-09-08T09:08:52.657922+00:00"
+      },
+      {
+        "from": "server",
+        "body": "john joined room1",
+        "ts": "2025-09-08T09:09:14.757098+00:00"
+      },
+      {
+        "from": "john",
+        "body": "https://www.youtube.com/",
+        "ts": "2025-09-08T09:09:17.743774+00:00"
+      },
+      {
+        "from": "john",
+        "body": "alphaMountain.ai",
+        "ts": "2025-09-08T09:11:07.080081+00:00"
+      },
+      {
+        "from": "john",
+        "body": "videos",
+        "ts": "2025-09-08T09:11:07.088263+00:00"
+      },
+      {
+        "from": "john",
+        "body": "Mixed Content/Potentially Adult, Video/Multimedia (alphaMountain.ai)",
+        "ts": "2025-09-08T09:11:07.087093+00:00"
+      },
+      {
+        "from": "john",
+        "body": "BitDefender",
+        "ts": "2025-09-08T09:11:07.087767+00:00"
+      },
+      {
+        "from": "john",
+        "body": "Xcitium Verdict Cloud",
+        "ts": "2025-09-08T09:11:07.093061+00:00"
+      },
+      {
+        "from": "john",
+        "body": "adult content/violence",
+        "ts": "2025-09-08T09:11:07.105047+00:00"
+      },
+      {
+        "from": "john",
+        "body": "media sharing",
+        "ts": "2025-09-08T09:11:07.092961+00:00"
+      },
+      {
+        "from": "john",
+        "body": "Dr.Web",
+        "ts": "2025-09-08T09:11:07.104978+00:00"
+      },
+      {
+        "from": "john",
+        "body": "Sophos",
+        "ts": "2025-09-08T09:11:07.105143+00:00"
+      },
+      {
+        "from": "john",
+        "body": "video hosting",
+        "ts": "2025-09-08T09:11:07.111924+00:00"
+      },
+      {
+        "from": "john",
+        "body": "Forcepoint ThreatSeeker",
+        "ts": "2025-09-08T09:11:07.122732+00:00"
+      },
+      {
+        "from": "john",
+        "body": "social web - youtubehttps://www.youtube.com/",
+        "ts": "2025-09-08T09:11:16.714003+00:00"
+      },
+      {
+        "from": "john",
+        "body": "https://www.youtube.com/",
+        "ts": "2025-09-08T09:11:26.661955+00:00"
+      },
+      {
+        "from": "john",
+        "body": "https://www.youtube.com/",
+        "ts": "2025-09-08T09:11:31.465628+00:00"
+      },
+      {
+        "from": "server",
+        "body": "john joined room1",
+        "ts": "2025-09-08T09:39:06.282975+00:00"
+      },
+      {
+        "from": "john",
+        "body": "https://www.youtube.com/",
+        "ts": "2025-09-08T09:39:21.184341+00:00"
+      },
+      {
+        "from": "john",
+        "body": "https://www.youtube.com/",
+        "ts": "2025-09-08T09:44:03.296738+00:00"
+      },
+      {
+        "from": "john",
+        "body": "https://www.youtube.com/",
+        "ts": "2025-09-08T09:44:06.367172+00:00"
+      },
+      {
+        "from": "john",
+        "body": "לינג",
+        "ts": "2025-09-08T09:44:11.636659+00:00"
+      },
+      {
+        "from": "john",
+        "body": "גדךלמע",
+        "ts": "2025-09-08T09:44:12.752361+00:00"
+      },
+      {
+        "from": "john",
+        "body": "https://www.youtube.com/",
+        "ts": "2025-09-08T09:44:14.149923+00:00"
+      },
+      {
+        "from": "john",
+        "body": "[URL STATS] {'malicious': 0, 'suspicious': 0, 'undetected': 26, 'harmless': 72, 'timeout': 0}",
+        "ts": "2025-09-08T09:44:56.550995+00:00"
+      },
+      {
+        "from": "john",
+        "body": "172.18.0.2 - - [08/Sep/2025 09:44:14] \"GET /socket.io/?transport=polling&EIO=4&sid=FgQdtx6JVRYNxNvqAAAA&t=1757324652.757179 HTTP/1.1\" 200 -",
+        "ts": "2025-09-08T09:44:56.555630+00:00"
+      },
+      {
+        "from": "john",
+        "body": "https://www.youtube.com/",
+        "ts": "2025-09-08T09:45:05.657791+00:00"
+      },
+      {
+        "from": "john",
+        "body": "https://www.youtube.com/",
+        "ts": "2025-09-08T09:45:09.039166+00:00"
+      },
+      {
+        "from": "john",
+        "body": "https://www.youtube.com/",
+        "ts": "2025-09-08T09:45:10.777227+00:00"
+      },
+      {
+        "from": "server",
+        "body": "john joined room1",
+        "ts": "2025-09-08T09:46:20.382570+00:00"
+      },
+      {
+        "from": "john",
+        "body": "> [room1] john: https://www.youtube.com/",
+        "ts": "2025-09-08T09:46:23.076888+00:00"
+      },
+      {
+        "from": "server",
+        "body": "john joined room1",
+        "ts": "2025-09-08T09:48:06.554621+00:00"
+      },
+      {
+        "from": "john",
+        "body": "[DEBUG] detailed_categories has 0 items",
+        "ts": "2025-09-08T09:48:07.850714+00:00"
+      },
+      {
+        "from": "john",
+        "body": "[DEBUG] No detailed categories found",
+        "ts": "2025-09-08T09:48:07.856392+00:00"
+      },
+      {
+        "from": "john",
+        "body": "172.18.0.2 - - [08/Sep/2025 09:46:23] \"GET /socket.io/?transport=polling&EIO=4&sid=IdCTk2O80COhOEbIAAAA&t=1757324780.3839114 HTTP/1.1\" 200 -",
+        "ts": "2025-09-08T09:48:07.861107+00:00"
+      },
+      {
+        "from": "john",
+        "body": "https://www.youtube.com/",
+        "ts": "2025-09-08T09:48:16.430716+00:00"
+      },
+      {
+        "from": "server",
+        "body": "john joined room1",
+        "ts": "2025-09-08T09:51:40.348525+00:00"
+      },
+      {
+        "from": "server",
+        "body": "john disconnected",
+        "ts": "2025-09-08T09:51:40.511592+00:00"
+      },
+      {
+        "from": "server",
+        "body": "john joined room1",
+        "ts": "2025-09-08T09:51:42.399149+00:00"
+      },
+      {
+        "from": "john",
+        "body": "https://www.youtube.com/",
+        "ts": "2025-09-08T09:51:56.808193+00:00"
+      },
+      {
+        "from": "server",
+        "body": "john joined room1",
+        "ts": "2025-09-08T09:53:14.339216+00:00"
+      },
+      {
+        "from": "server",
+        "body": "john disconnected",
+        "ts": "2025-09-08T09:53:15.819182+00:00"
+      },
+      {
+        "from": "server",
+        "body": "john joined room1",
+        "ts": "2025-09-08T09:53:16.938892+00:00"
+      },
+      {
+        "from": "john",
+        "body": "[DETAILED CATEGORIES]",
+        "ts": "2025-09-08T09:53:18.575945+00:00"
+      },
+      {
+        "from": "john",
+        "body": "Dr.Web: violence/adult content",
+        "ts": "2025-09-08T09:53:18.582517+00:00"
+      },
+      {
+        "from": "john",
+        "body": "alphaMountain.ai: Mixed Content/Potentially Adult, Video/Multimedia (alphaMountain.ai)",
+        "ts": "2025-09-08T09:53:18.581760+00:00"
+      },
+      {
+        "from": "john",
+        "body": "Forcepoint ThreatSeeker: social web - youtube",
+        "ts": "2025-09-08T09:53:18.589953+00:00"
+      },
+      {
+        "from": "john",
+        "body": "BitDefender: videos",
+        "ts": "2025-09-08T09:53:18.582292+00:00"
+      },
+      {
+        "from": "john",
+        "body": "Sophos: video hosting",
+        "ts": "2025-09-08T09:53:18.589839+00:00"
+      },
+      {
+        "from": "john",
+        "body": "https://www.youtube.com/",
+        "ts": "2025-09-08T09:53:31.314257+00:00"
+      },
+      {
+        "from": "john",
+        "body": "[URL STATS] {'malicious': 0, 'suspicious': 0, 'undetected': 26, 'harmless': 72, 'timeout': 0}",
+        "ts": "2025-09-08T09:56:33.436640+00:00"
+      },
+      {
+        "from": "john",
+        "body": "Mixed Content/Potentially Adult, Video/Multimedia (alphaMountain.ai)",
+        "ts": "2025-09-08T09:56:33.445756+00:00"
+      },
+      {
+        "from": "john",
+        "body": "videos",
+        "ts": "2025-09-08T09:56:33.445971+00:00"
+      },
+      {
+        "from": "john",
+        "body": "[URL CATEGORIES]",
+        "ts": "2025-09-08T09:56:33.445080+00:00"
+      },
+      {
+        "from": "john",
+        "body": "video hosting",
+        "ts": "2025-09-08T09:56:33.469189+00:00"
+      },
+      {
+        "from": "john",
+        "body": "social web - youtube",
+        "ts": "2025-09-08T09:56:33.469342+00:00"
+      },
+      {
+        "from": "john",
+        "body": "violence/adult content",
+        "ts": "2025-09-08T09:56:33.468459+00:00"
+      },
+      {
+        "from": "john",
+        "body": "[URL DETECTED] https://www.youtube.com/ - Categories: alphaMountain.ai, BitDefender, Dr.Web, Sophos, Forcepoint ThreatSeeker, Status: CLEAN",
+        "ts": "2025-09-08T09:56:34.097428+00:00"
+      },
+      {
+        "from": "john",
+        "body": "https://www.youtube.com/",
+        "ts": "2025-09-08T09:56:44.872748+00:00"
+      },
+      {
+        "from": "john",
+        "body": "https://www.youtube.com/",
+        "ts": "2025-09-08T09:56:54.780759+00:00"
+      },
+      {
+        "from": "john",
+        "body": "https://www.youtube.com/",
+        "ts": "2025-09-08T09:57:07.582134+00:00"
+      },
+      {
+        "from": "john",
+        "body": "https://www.youtube.com/",
+        "ts": "2025-09-08T09:57:15.162130+00:00"
+      },
+      {
+        "from": "server",
+        "body": "john joined room1",
+        "ts": "2025-09-08T09:58:18.991668+00:00"
+      },
+      {
+        "from": "john",
+        "body": "detailed categories",
+        "ts": "2025-09-08T09:58:22.279927+00:00"
+      },
+      {
+        "from": "john",
+        "body": "https://www.youtube.com/",
+        "ts": "2025-09-08T09:58:29.927905+00:00"
+      },
+      {
+        "from": "john",
+        "body": "https://www.youtube.com/",
+        "ts": "2025-09-08T09:58:37.897877+00:00"
+      },
+      {
+        "from": "server",
+        "body": "john joined room1",
+        "ts": "2025-09-08T09:59:19.063861+00:00"
+      },
+      {
+        "from": "john",
+        "body": "https://www.youtube.com/",
+        "ts": "2025-09-08T09:59:24.694685+00:00"
+      },
+      {
+        "from": "john",
+        "body": "בדקתי את האתר הזה https://www.facebook.com ונראה לי מעניין",
+        "ts": "2025-09-08T10:00:32.692960+00:00"
+      },
+      {
+        "from": "john",
+        "body": "בדקתי את האתר הזה https://www.facebook.com ונראה לי מעניין",
+        "ts": "2025-09-08T10:05:45.848909+00:00"
+      },
+      {
+        "from": "john",
+        "body": "בדקתי את האתר הזה https://www.facebook.com ונראה לי מעניין",
+        "ts": "2025-09-08T10:06:02.860046+00:00"
+      },
+      {
+        "from": "server",
+        "body": "john joined room1",
+        "ts": "2025-09-08T10:08:14.719761+00:00"
+      },
+      {
+        "from": "john",
+        "body": "http://github.io/project",
+        "ts": "2025-09-08T10:08:17.270905+00:00"
+      },
+      {
+        "from": "john",
+        "body": "http://github.io/project",
+        "ts": "2025-09-08T10:08:22.947138+00:00"
+      },
+      {
+        "from": "john",
+        "body": "http://github.io",
+        "ts": "2025-09-08T10:08:30.526413+00:00"
+      },
+      {
+        "from": "john",
+        "body": "http://github.io/project",
+        "ts": "2025-09-08T10:10:04.123586+00:00"
+      },
+      {
+        "from": "john",
+        "body": "http://github.io/project",
+        "ts": "2025-09-08T10:10:16.925911+00:00"
+      },
+      {
+        "from": "john",
+        "body": "http://example.com",
+        "ts": "2025-09-08T10:10:23.682220+00:00"
+      },
+      {
+        "from": "john",
+        "body": "http://example.com",
+        "ts": "2025-09-08T10:10:26.447451+00:00"
+      },
+      {
+        "from": "john",
+        "body": "https://www.astuces-aide-informatique.info/17978/nouvelle-adresse-zone-telechargement",
+        "ts": "2025-09-08T10:12:01.686101+00:00"
+      },
+      {
+        "from": "john",
+        "body": "google.com",
+        "ts": "2025-09-08T10:12:12.841960+00:00"
+      },
+      {
+        "from": "john",
+        "body": "google.co.il",
+        "ts": "2025-09-08T10:12:21.021542+00:00"
+      }
+    ],
+    "john": [
+      {
+        "from": "server",
+        "body": "john joined john",
+        "ts": "2025-09-08T10:19:46.354860+00:00"
+      },
+      {
+        "from": "server",
+        "body": "john disconnected",
+        "ts": "2025-09-08T10:20:01.294130+00:00"
+      }
+    ],
+    "r": [
+      {
+        "from": "server",
+        "body": "j joined r",
+        "ts": "2025-09-08T10:20:06.117195+00:00"
+      },
+      {
+        "from": "server",
+        "body": "t joined r",
+        "ts": "2025-09-08T10:20:10.993274+00:00"
+      },
+      {
+        "from": "j",
+        "body": "google.com",
+        "ts": "2025-09-08T10:20:18.748925+00:00"
+      },
+      {
+        "from": "t",
+        "body": "https://office-activator.com/activate-office-2021-without-product-key-for-free-using-batch-file/",
+        "ts": "2025-09-08T10:20:58.600314+00:00"
+      },
+      {
+        "from": "server",
+        "body": "t joined r",
+        "ts": "2025-09-08T10:23:38.743192+00:00"
+      },
+      {
+        "from": "server",
+        "body": "j joined r",
+        "ts": "2025-09-08T10:23:40.837183+00:00"
       }
     ]
   }

@@ -7,16 +7,27 @@ from datetime import datetime, timezone
 import threading
 import json
 import os
+from url_det import analyze_message
+
+# Load configuration
+def load_config():
+    config_path = os.path.join(os.path.dirname(__file__), 'config.json')
+    with open(config_path, 'r') as f:
+        return json.load(f)
+
+config = load_config()
 
 app = Flask(__name__)
-socketio = SocketIO(app, cors_allowed_origins="*")
+socketio = SocketIO(app, cors_allowed_origins=config['server']['cors_origins'])
 
 # -------------------------
-# Config (simple constants)
+# Config from file
 # -------------------------
-MAX_LEN = 2048
-MAX_MESSAGES_PER_ROOM = 1000
-STATE_PATH = Path("data/state.json")
+MAX_LEN = config['messages']['max_length']
+MAX_MESSAGES_PER_ROOM = config['messages']['max_per_room']
+STATE_PATH = Path(config['storage']['state_file'])
+URL_DETECTION_ENABLED = config['url_detection']['enabled']
+LOG_URL_DETECTIONS = config['url_detection']['log_detections']
 
 # -------------------------
 # In-memory runtime state
@@ -193,6 +204,38 @@ def on_chat(data):
     info = clients.get(request.sid, {"name": "guest", "room": "general"})
     room, sender = info["room"], info["name"]
 
+    # Analyze message for URLs
+    if URL_DETECTION_ENABLED:
+        url_analysis = analyze_message(body)
+        if url_analysis:
+            for result in url_analysis:
+                if result['valid']:
+                    status = "CLEAN" if not result['malicious'] else "MALICIOUS"
+                    
+                    if LOG_URL_DETECTIONS:
+                        print(f"1. URL detected: {result['url']}")
+                        print(f"2. Status: {status}")
+                        
+                        detailed_cats = result.get('detailed_categories', {})
+                        if detailed_cats:
+                            print("3. Categories:")
+                            for category in detailed_cats.values():
+                                print(f"   - {category}")
+                        else:
+                            print("3. Categories: None")
+                        print("---")
+                    
+                    # Block malicious URLs
+                    if result['malicious']:
+                        emit("error", {"reason": f"Message blocked: Malicious URL detected ({result['url']})"})
+                        return
+                        
+                elif LOG_URL_DETECTIONS:
+                    print(f"1. URL detected: {result['url']}")
+                    print(f"2. Status: ERROR - {result.get('error')}")
+                    print("3. Categories: Unable to analyze")
+                    print("---")
+
     # Persist message, then broadcast
     msg = append_message(room, sender, body)
     emit("chat", {"from": sender, "room": room, "body": body, "ts": msg["ts"]}, room=room)
@@ -216,4 +259,7 @@ def disconnect():
         append_message(info["room"], "server", f"{info['name']} disconnected")
 
 if __name__ == "__main__":
-    socketio.run(app, host="0.0.0.0", port=5000)
+    socketio.run(app, 
+                host=config['server']['host'], 
+                port=config['server']['port'],
+                debug=config['server']['debug'])
