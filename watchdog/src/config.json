@@ -1,0 +1,23 @@
+{
+  "check_interval": 30,
+  "timeout": 5,
+  "retry_attempts": 3,
+  "log_level": "INFO",
+  "servers": [
+    {
+      "name": "main-server",
+      "url": "http://main-server:5000/health",
+      "enabled": true
+    },
+    {
+      "name": "external-server", 
+      "url": "http://10.17.138.217:5000/health",
+      "enabled": false
+    }
+  ],
+  "alerts": {
+    "enabled": true,
+    "failure_threshold": 3,
+    "recovery_notification": true
+  }
+}

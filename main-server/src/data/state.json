@@ -1,0 +1,65 @@
+{
+  "rooms": {
+    "general": {
+      "members": [
+        "john"
+      ],
+      "created_at": "2025-09-07T13:22:20.416573+00:00",
+      "last_updated": "2025-09-07T13:24:14.336822+00:00"
+    }
+  },
+  "messages": {
+    "general": [
+      {
+        "from": "server",
+        "body": "john joined general",
+        "ts": "2025-09-07T13:22:20.417862+00:00"
+      },
+      {
+        "from": "john",
+        "body": "dsfs",
+        "ts": "2025-09-07T13:22:27.805147+00:00"
+      },
+      {
+        "from": "john",
+        "body": "fsd",
+        "ts": "2025-09-07T13:22:30.417780+00:00"
+      },
+      {
+        "from": "server",
+        "body": "john disconnected",
+        "ts": "2025-09-07T13:23:46.303203+00:00"
+      },
+      {
+        "from": "server",
+        "body": "john joined general",
+        "ts": "2025-09-07T13:23:47.644162+00:00"
+      },
+      {
+        "from": "john",
+        "body": "מכג",
+        "ts": "2025-09-07T13:23:50.185473+00:00"
+      },
+      {
+        "from": "server",
+        "body": "john joined general",
+        "ts": "2025-09-07T13:24:08.697220+00:00"
+      },
+      {
+        "from": "john",
+        "body": "ndsg",
+        "ts": "2025-09-07T13:24:11.750388+00:00"
+      },
+      {
+        "from": "john",
+        "body": "fnd",
+        "ts": "2025-09-07T13:24:12.790063+00:00"
+      },
+      {
+        "from": "john",
+        "body": "dfhere",
+        "ts": "2025-09-07T13:24:14.336822+00:00"
+      }
+    ]
+  }
+}

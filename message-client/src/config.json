@@ -1,0 +1,23 @@
+{
+  "server": {
+    "url": "http://main-server:5000",
+    "backup_url": "http://10.17.138.217:5000"
+  },
+  "connection": {
+    "timeout": 10,
+    "retry_attempts": 3,
+    "retry_delay": 5,
+    "transports": ["polling", "websocket"]
+  },
+  "client": {
+    "default_room": "general",
+    "default_name": "john",
+    "auto_reconnect": true,
+    "heartbeat_interval": 25
+  },
+  "logging": {
+    "enabled": false,
+    "level": "INFO",
+    "show_timestamps": true
+  }
+}
