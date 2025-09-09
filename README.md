@@ -7,8 +7,11 @@ A real-time chat server with integrated URL security scanning using VirusTotal A
 - **Real-time Chat**: WebSocket-based communication using Socket.IO
 - **Multi-room Support**: Users can join different chat rooms
 - **URL Security Scanning**: Automatic detection and analysis of URLs using VirusTotal API
+- **Advanced Threat Levels**: Configurable threat level blocking (CLEAN, SUSPICIOUS, LOW, MEDIUM, HIGH)
 - **Malicious URL Blocking**: Prevents messages with malicious URLs from being sent
 - **Smart Caching**: Caches URL analysis results to reduce API calls
+- **AI Content Filtering**: Gemini AI-powered content filtering for specific topics
+- **URL Category Filtering**: Blocks URLs based on content categories using AI analysis
 - **Persistent Storage**: Messages and room data are saved to disk
 - **REST API**: HTTP endpoints for room and message management
 - **Monitoring**: Watchdog service for server health monitoring
@@ -26,6 +29,7 @@ A real-time chat server with integrated URL security scanning using VirusTotal A
 
 - Docker and Docker Compose
 - VirusTotal API Key (free at https://www.virustotal.com/gui/join-us)
+- Google Gemini API Key (free at https://aistudio.google.com/)
 
 ## Quick Start
 
@@ -35,12 +39,19 @@ git clone <repository-url>
 cd checkpoint-chat-3_team
 ```
 
-### 2. Configure VirusTotal API
-Edit `main-server/src/config.json` and replace the API key:
+### 2. Configure API Keys
+Edit `main-server/src/config.json` and replace the API keys:
 ```json
 {
   "url_detection": {
-    "virustotal_api_key": "your-virustotal-api-key-here"
+    "virustotal_api_key": "your-virustotal-api-key-here",
+    "block_threat_level": "MEDIUM"
+  },
+  "content_filter": {
+    "enabled": true,
+    "blocked_topic": "baking",
+    "keyword_threshold": 20,
+    "gemini_api_key": "your-gemini-api-key-here"
   }
 }
 ```
@@ -108,7 +119,14 @@ python3 src/client.py <room> <username>
   "url_detection": {
     "enabled": true,
     "log_detections": true,
-    "virustotal_api_key": "your-virustotal-api-key-here"
+    "virustotal_api_key": "your-virustotal-api-key-here",
+    "block_threat_level": "MEDIUM"
+  },
+  "content_filter": {
+    "enabled": false,
+    "blocked_topic": "baking",
+    "keyword_threshold": 20,
+    "gemini_api_key": "your-gemini-api-key-here"
   },
   "storage": {
     "state_file": "data/state.json"
@@ -165,14 +183,28 @@ python3 src/client.py <room> <username>
 - Malicious URL blocking
 - Smart caching (1-hour TTL) to reduce API usage
 
-### Security Logging
+### Advanced Threat Analysis
 ```
 1. URL detected: https://example.com
-2. Status: CLEAN
+2. Threat Level: MEDIUM (3.1%)
 3. Categories:
-   - social media
-   - video hosting
+   - Mixed Content/Potentially Adult, Video/Multimedia
+   - videos
+   - social web - youtube
 ---
+```
+
+### AI Content Filtering
+- **Keyword Detection**: Initial filtering based on configurable keywords
+- **Gemini AI Analysis**: Semantic analysis of message content
+- **URL Category Analysis**: AI-powered analysis of URL categories
+- **Topic-based Blocking**: Block messages related to specific topics (e.g., baking, cooking)
+
+### Content Filter Logging
+```
+[CONTENT FILTER] Topic: baking, Match score: 35.2%, Threshold: 20%
+[GEMINI DEBUG] Gemini result: related=true, reason=Message contains baking instructions
+Message blocked: Gemini confirmed: Message contains baking recipe instructions
 ```
 
 ## Monitoring
@@ -198,6 +230,8 @@ main-server/src/
 ├── server.py          # Main server application
 ├── state_manager.py   # Room and message management
 ├── url_det.py         # URL detection and analysis
+├── content_filter.py  # AI-powered content filtering
+├── filter_keywords.json # Content filter keywords
 ├── utils.py           # Common utilities
 └── config.json        # Server configuration
 
@@ -212,9 +246,10 @@ watchdog/src/
 
 ### Adding Features
 1. **New URL Analyzers**: Extend `url_det.py`
-2. **Custom Commands**: Add handlers in `server.py`
-3. **Additional APIs**: Add endpoints in `server.py`
-4. **Client Features**: Modify `client.py`
+2. **Content Filters**: Add topics to `filter_keywords.json`
+3. **Custom Commands**: Add handlers in `server.py`
+4. **Additional APIs**: Add endpoints in `server.py`
+5. **Client Features**: Modify `client.py`
 
 ## Troubleshooting
 
@@ -233,6 +268,11 @@ docker-compose ps
 - Verify API key is correct
 - Check API rate limits
 - Ensure internet connectivity
+
+**Gemini API Errors**
+- Verify Gemini API key is correct
+- Check API quotas and limits
+- Install: `pip install google-generativeai`
 
 **Permission Errors**
 ```bash
@@ -255,8 +295,11 @@ docker-compose logs
 
 ## Security Considerations
 
-- **API Keys**: Store VirusTotal API key securely
+- **API Keys**: Store VirusTotal and Gemini API keys securely
 - **Network**: Use HTTPS in production
 - **Input Validation**: Messages are length-limited
 - **URL Filtering**: Malicious URLs are blocked automatically
+- **Content Filtering**: AI-powered topic-based message filtering
+- **Threat Levels**: Configurable security sensitivity levels
 - **Data Storage**: Messages are stored locally (consider encryption)
+- **AI Privacy**: Content sent to Gemini for analysis (review privacy policy)
