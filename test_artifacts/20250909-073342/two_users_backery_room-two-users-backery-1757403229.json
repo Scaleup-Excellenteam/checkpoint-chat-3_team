@@ -1,0 +1,25 @@
+{
+  "created_at": "2025-09-09T07:33:58.596150+00:00",
+  "room": "room-two-users-backery-1757403229",
+  "category": "backery",
+  "users": [
+    "user0",
+    "user1"
+  ],
+  "turns": 12,
+  "transcript": [
+    "user0: Did you see how the fullbacks tucked in during buildup?",
+    "user1: Yes! Lovely interplay; I'm liking the team's shape tonight.",
+    "user0: Definitely more fluid than last week, the midfielders are finding space too.",
+    "user1: I think we're in for a good match, the forwards look hungry too!",
+    "user0: Fingers crossed we can keep this intensity up!",
+    "user1: Our midfield is dictating the tempo; this is exciting to watch!",
+    "user0: I'm loving the quick passing; they're barely giving the opposition a sniff!",
+    "user1: This is the best football I've seen all season!",
+    "user0: Yes, that through ball to the striker was sublime!",
+    "user1: I'm loving the energy; this team is on fire tonight!",
+    "user0: That final cross was inch-perfect, what a game!",
+    "user1: This passing is delightful; they're playing with such confidence!"
+  ],
+  "note": "Two users alternate; Gemini generates each next line based on the history."
+}

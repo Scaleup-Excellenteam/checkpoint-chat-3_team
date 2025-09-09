@@ -1,0 +1,25 @@
+{
+  "created_at": "2025-09-09T07:40:48.962841+00:00",
+  "room": "room-bakery-1757403639",
+  "category": "bakery",
+  "users": [
+    "user0",
+    "user1"
+  ],
+  "turns": 12,
+  "transcript": [
+    "user0: Hey, did you try the new sourdough loaf today?",
+    "user1: Yes! The crust was great—how did you tweak the hydration?",
+    "user0: I used 80% hydration for that extra chewy texture.",
+    "user1: That's a lot of water; I'll have to try that!",
+    "user0: I also added a longer bulk fermentation for extra flavor.",
+    "user1: How long did the bulk fermentation take, roughly?",
+    "user0: About four hours; it depends on your room temperature.",
+    "user1: Four hours sounds perfect; I'll aim for that.",
+    "user0: What kind of flour works best for that kind of bread?",
+    "user1: I usually use a mix of bread flour and whole wheat.",
+    "user0: A mix of flours sounds perfect for added nutrients!",
+    "user1: I might add some vital wheat gluten for extra strength."
+  ],
+  "note": "Config-driven chat; Gemini generates each turn from the running history."
+}
