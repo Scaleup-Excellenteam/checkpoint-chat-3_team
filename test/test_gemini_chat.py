@@ -11,6 +11,34 @@ import pytest
 import requests
 
 # =========================
+# User parameters (edit here)
+# =========================
+GOOGLE_API_KEY = ""
+CHAT_CONFIG_PATH = "test/chat_config.json"
+GEMINI_MODEL = "gemini-1.5-flash"
+
+# Optional: local overrides without committing secrets
+# Create test/local_settings.py with GOOGLE_API_KEY = "..." etc.
+try:
+    from test.local_settings import GOOGLE_API_KEY as _K  # type: ignore
+    if _K:
+        GOOGLE_API_KEY = _K
+except Exception:
+    pass
+try:
+    from test.local_settings import CHAT_CONFIG_PATH as _P  # type: ignore
+    if _P:
+        CHAT_CONFIG_PATH = _P
+except Exception:
+    pass
+try:
+    from test.local_settings import GEMINI_MODEL as _M  # type: ignore
+    if _M:
+        GEMINI_MODEL = _M
+except Exception:
+    pass
+
+# =========================
 # Docker / Server config
 # =========================
 DOCKER_COMPOSE_FILE = "docker-compose.yml"
@@ -115,10 +143,10 @@ def bring_up_stack():
 # =========================
 # Load config
 # =========================
-def _load_config() -> dict:
-    cfg_path = os.environ.get("CHAT_CONFIG_PATH", "test/chat_config.json")
+def _load_config(cfg_path: str) -> dict:
     print(f"[CONFIG] Loading {cfg_path} …")
-    if not Path(cfg_path).exists():
+    p = Path(cfg_path)
+    if not p.exists():
         print("[CONFIG] Not found. Using defaults.")
         return {
             "category": "bakery",
@@ -130,7 +158,7 @@ def _load_config() -> dict:
                 "Yes! The crust was great—how did you tweak the hydration?"
             ]
         }
-    with open(cfg_path, "r", encoding="utf-8") as f:
+    with p.open("r", encoding="utf-8") as f:
         data = json.load(f)
 
     # normalize "backery" -> "bakery"
@@ -167,11 +195,14 @@ def test_gemini_config_chat(bring_up_stack):
     except Exception as e:
         pytest.skip(f"Install: pip install google-genai ({e})")
 
-    api_key = os.environ.get("GOOGLE_API_KEY")
+    # ---- Read parameters from this file (no env, no CLI)
+    api_key = GOOGLE_API_KEY
     if not api_key:
-        pytest.skip("Set GOOGLE_API_KEY to run this test")
+        pytest.skip("Set GOOGLE_API_KEY in this file or in test/local_settings.py")
 
-    cfg = _load_config()
+    MODEL = GEMINI_MODEL
+    cfg = _load_config(CHAT_CONFIG_PATH)
+
     category: str = cfg["category"]
     users: List[str] = cfg["users"]
     total_turns: int = int(cfg["total_turns"])
@@ -181,10 +212,10 @@ def test_gemini_config_chat(bring_up_stack):
     print(f"[TEST] Category: {category}")
     print(f"[TEST] Users: {users}")
     print(f"[TEST] Turns: {total_turns}")
+    print(f"[TEST] Model: {MODEL}")
 
     # ---- Gemini setup
     client_genai = genai.Client(api_key=api_key)
-    MODEL = os.environ.get("GEMINI_MODEL", "gemini-1.5-flash")
 
     reply_schema = Schema(
         type=Type.OBJECT,
@@ -204,7 +235,6 @@ def test_gemini_config_chat(bring_up_stack):
     )
 
     def persona_for(user: str) -> str:
-        # fallback persona if not provided
         return personas.get(user, "friendly conversationalist")
 
     def next_reply(history_text: str, persona: str) -> str:
