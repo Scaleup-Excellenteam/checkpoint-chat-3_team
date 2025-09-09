@@ -1,9 +1,11 @@
 {
   "rooms": {
     "general": {
-      "members": [],
+      "members": [
+        "john"
+      ],
       "created_at": "2025-09-07T13:22:20.416573+00:00",
-      "last_updated": "2025-09-08T10:19:54.400945+00:00"
+      "last_updated": "2025-09-08T13:45:49.443027+00:00"
     },
     "room1": {
       "members": [],
@@ -16,10 +18,7 @@
       "last_updated": "2025-09-08T10:20:01.294130+00:00"
     },
     "r": {
-      "members": [
-        "t",
-        "j"
-      ],
+      "members": [],
       "created_at": "2025-09-08T10:20:06.115417+00:00",
       "last_updated": "2025-09-08T10:23:40.837183+00:00"
     }
@@ -120,6 +119,66 @@
         "from": "server",
         "body": "john disconnected",
         "ts": "2025-09-08T10:19:54.400945+00:00"
+      },
+      {
+        "from": "server",
+        "body": "john joined general",
+        "ts": "2025-09-08T13:43:14.619565+00:00"
+      },
+      {
+        "from": "server",
+        "body": "john joined general",
+        "ts": "2025-09-08T13:43:17.784536+00:00"
+      },
+      {
+        "from": "john",
+        "body": "google.com",
+        "ts": "2025-09-08T13:43:30.091238+00:00"
+      },
+      {
+        "from": "john",
+        "body": "google.com",
+        "ts": "2025-09-08T13:43:35.482340+00:00"
+      },
+      {
+        "from": "john",
+        "body": "google.com",
+        "ts": "2025-09-08T13:43:41.944240+00:00"
+      },
+      {
+        "from": "server",
+        "body": "john joined general",
+        "ts": "2025-09-08T13:44:57.918504+00:00"
+      },
+      {
+        "from": "server",
+        "body": "john joined general",
+        "ts": "2025-09-08T13:44:57.950061+00:00"
+      },
+      {
+        "from": "server",
+        "body": "john joined general",
+        "ts": "2025-09-08T13:45:31.095537+00:00"
+      },
+      {
+        "from": "server",
+        "body": "john joined general",
+        "ts": "2025-09-08T13:45:31.395909+00:00"
+      },
+      {
+        "from": "john",
+        "body": "google.com",
+        "ts": "2025-09-08T13:45:37.458712+00:00"
+      },
+      {
+        "from": "john",
+        "body": "google.com",
+        "ts": "2025-09-08T13:45:43.189809+00:00"
+      },
+      {
+        "from": "john",
+        "body": "google.com",
+        "ts": "2025-09-08T13:45:49.443027+00:00"
       }
     ],
     "room1": [
