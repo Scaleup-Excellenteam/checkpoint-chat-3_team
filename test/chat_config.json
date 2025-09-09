@@ -1,0 +1,13 @@
+{
+  "category": "bakery",
+  "total_turns": 12,
+  "users": ["user0", "user1"],
+  "personas": {
+    "user0": "friendly baker",
+    "user1": "curious customer"
+  },
+  "seed": [
+    "Hey, did you try the new sourdough loaf today?",
+    "Yes! The crust was great—how did you tweak the hydration?"
+  ]
+}
