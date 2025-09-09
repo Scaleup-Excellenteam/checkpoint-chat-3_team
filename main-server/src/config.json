@@ -12,7 +12,8 @@
   "url_detection": {
     "enabled": true,
     "log_detections": true,
-    "virustotal_api_key": "70fb8199e7a8fca7cfe691e979bd7c88a4623d25346d23b777420e696c3893e5"
+    "virustotal_api_key": "70fb8199e7a8fca7cfe691e979bd7c88a4623d25346d23b777420e696c3893e5",
+    "block_threat_level": "MEDIUM"
   },
   "storage": {
     "state_file": "data/state.json"
