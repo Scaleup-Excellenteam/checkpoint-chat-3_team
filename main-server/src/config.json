@@ -17,5 +17,11 @@
   },
   "storage": {
     "state_file": "data/state.json"
+  },
+  "content_filter": {
+    "enabled": true,
+    "blocked_topic": "baking",
+    "keyword_threshold": 2,
+    "gemini_api_key": "AIzaSyBk_Ula3pkQtv5d2K_DCkfJhoTX6wGkTWU"
   }
 }
