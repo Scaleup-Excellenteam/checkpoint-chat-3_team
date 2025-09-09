@@ -7,6 +7,55 @@ from utils import load_config
 # Load VirusTotal API key from configuration
 config = load_config()
 API_KEY = config['url_detection']['virustotal_api_key']
+BLOCK_THREAT_LEVEL = config['url_detection']['block_threat_level']
+
+# Debug: print loaded configuration
+print(f"[CONFIG] Block threat level set to: {BLOCK_THREAT_LEVEL}")
+
+# Threat level hierarchy for comparison
+THREAT_LEVELS = {
+    "CLEAN": 0,
+    "SUSPICIOUS": 1,
+    "LOW": 2,
+    "MEDIUM": 3,
+    "HIGH": 4
+}
+
+def calculate_threat_level(stats):
+    """Calculate threat level based on VirusTotal stats"""
+    malicious = stats.get("malicious", 0)
+    suspicious = stats.get("suspicious", 0) 
+    harmless = stats.get("harmless", 0)
+    undetected = stats.get("undetected", 0)
+    
+    total_engines = malicious + suspicious + harmless + undetected
+    
+    if total_engines == 0:
+        return "UNKNOWN", 0
+    
+    # Calculate percentages
+    malicious_percent = (malicious / total_engines) * 100
+    suspicious_percent = (suspicious / total_engines) * 100
+    
+    # Determine threat level - more sensitive thresholds
+    if malicious_percent >= 5:  # 5% or more engines detect as malicious
+        return "HIGH", malicious_percent + suspicious_percent
+    elif malicious_percent >= 2:  # 2-5% engines detect as malicious
+        return "MEDIUM", malicious_percent + suspicious_percent
+    elif suspicious_percent >= 10:  # 10% or more engines are suspicious
+        return "MEDIUM", malicious_percent + suspicious_percent
+    elif malicious_percent > 0 or suspicious_percent >= 5:  # Any malicious or 5%+ suspicious
+        return "LOW", malicious_percent + suspicious_percent
+    elif suspicious_percent > 0:  # Any suspicious activity
+        return "SUSPICIOUS", suspicious_percent
+    else:
+        return "CLEAN", 0
+
+def should_block_url(threat_level):
+    """Check if URL should be blocked based on threat level"""
+    url_threat_score = THREAT_LEVELS.get(threat_level, 0)
+    block_threshold = THREAT_LEVELS.get(BLOCK_THREAT_LEVEL, 3)
+    return url_threat_score >= block_threshold
 
 # URL Cache - stores results to avoid duplicate API calls
 # Format: {url: {"result": {...}, "timestamp": time, "expires": time}}
@@ -80,13 +129,19 @@ def check_url(url):
             # Get detailed categories from VirusTotal categories field
             detailed_categories = data["data"]["attributes"].get("categories", {})
             
+            # Calculate threat level
+            threat_level, threat_score = calculate_threat_level(stats)
+            
             result = {
                 "url": url,
                 "valid": True,
                 "detection_stats": stats,
                 "categories": list(categories.keys()) if categories else ["unknown"],
                 "detailed_categories": detailed_categories,
-                "malicious": stats.get("malicious", 0) > 0
+                "malicious": stats.get("malicious", 0) > 0,
+                "threat_level": threat_level,
+                "threat_score": threat_score,
+                "should_block": should_block_url(threat_level)
             }
             
             # Save to cache

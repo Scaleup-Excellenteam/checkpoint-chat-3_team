@@ -91,11 +91,13 @@ def on_chat(data):
         if url_analysis:
             for result in url_analysis:
                 if result['valid']:
-                    status = "CLEAN" if not result['malicious'] else "MALICIOUS"
+                    threat_level = result.get('threat_level', 'UNKNOWN')
+                    threat_score = result.get('threat_score', 0)
+                    should_block = result.get('should_block', False)
                     
                     if LOG_URL_DETECTIONS:
                         print(f"1. URL detected: {result['url']}")
-                        print(f"2. Status: {status}")
+                        print(f"2. Threat Level: {threat_level} ({threat_score:.1f}%)")
                         
                         detailed_cats = result.get('detailed_categories', {})
                         if detailed_cats:
@@ -106,9 +108,9 @@ def on_chat(data):
                             print("3. Categories: None")
                         print("---")
                     
-                    # Block malicious URLs
-                    if result['malicious']:
-                        emit("error", {"reason": f"Message blocked: Malicious URL detected ({result['url']})"})
+                    # Block URLs based on threat level
+                    if should_block:
+                        emit("error", {"reason": f"Message blocked: {threat_level} threat level URL detected ({result['url']})"})
                         return
                         
                 elif LOG_URL_DETECTIONS:
