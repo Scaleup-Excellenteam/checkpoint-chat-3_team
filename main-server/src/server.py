@@ -4,6 +4,7 @@ from flask_socketio import SocketIO, emit, join_room, leave_room
 from utils import load_config, utc_now
 from state_manager import StateManager
 from url_det import analyze_message
+from content_filter import should_block_content, check_url_categories
 
 # Load configuration
 config = load_config()
@@ -85,6 +86,12 @@ def on_chat(data):
     info = clients.get(request.sid, {"name": "guest", "room": "general"})
     room, sender = info["room"], info["name"]
 
+    # Check content filter
+    should_block, block_reason = should_block_content(body)
+    if should_block:
+        emit("error", {"reason": f"Message blocked: {block_reason}"})
+        return
+
     # Analyze message for URLs
     if URL_DETECTION_ENABLED:
         url_analysis = analyze_message(body)
@@ -112,6 +119,20 @@ def on_chat(data):
                     if should_block:
                         emit("error", {"reason": f"Message blocked: {threat_level} threat level URL detected ({result['url']})"})
                         return
+                    
+                    # Check URL categories for content filter
+                    detailed_cats = result.get('detailed_categories', {})
+                    if detailed_cats:
+                        categories_list = list(detailed_cats.values())
+                        content_config = config.get('content_filter', {})
+                        if content_config.get('enabled', False):
+                            blocked_topic = content_config.get('blocked_topic', '')
+                            gemini_key = content_config.get('gemini_api_key', '')
+                            if blocked_topic and gemini_key:
+                                is_blocked, reason = check_url_categories(categories_list, blocked_topic, gemini_key)
+                                if is_blocked:
+                                    emit("error", {"reason": f"Message blocked: URL content related to {blocked_topic} ({result['url']})"})
+                                    return
                         
                 elif LOG_URL_DETECTIONS:
                     print(f"1. URL detected: {result['url']}")
